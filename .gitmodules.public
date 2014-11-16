@@ -4,4 +4,4 @@
 
 [submodule "zprezto"]
   path = .zprezto
-  url = https://github.com/steakknife/zprezto
+  url = https://github.com/steakknife/prezto
