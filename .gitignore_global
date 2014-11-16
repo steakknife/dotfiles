@@ -1,2 +1,53 @@
-*~
+# Mac
+._*
+.apdisk
+.com.apple.timemachine.donotpresent
 .DS_Store
+.disk_label*
+.file
+.localized
+.DocumentRevisions-V100/
+.Spotlight-V100/
+.TemporaryItems/
+.Trashes/
+.fseventsd/
+.vol/
+
+# KDE
+.directory
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# diff
+*.orig
+*.rej
+
+# Various temporary files
+*~
+*.swp
+~*.tmp
+
+# core dumps
+core
+
+# ctags
+tags
+TAGS
+
+# Other source control
+/.hg/*
+*/.hg/*
+.hgignore
+.bzr
+.darcs
+*.fossil
+.svn*
+tags
+CVS.adm
+/CVS/*
+*/CVS/*
+.cvsignore
+*/.cvsignore
+RCS

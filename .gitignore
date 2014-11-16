@@ -26,4 +26,4 @@
 /.ssh/
 /.netrc
 /.zcompdump*
-/.viminfo
+.viminfo

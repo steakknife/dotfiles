@@ -88,7 +88,7 @@ if [ -e "$(which curl >/dev/null 2>&1)" ]; then
 elif [ -e "$(which wget >/dev/null 2>&1)" ]; then
   alias get='wget'
 fi
-alias curl='curl --compressed -L#JRC - '
+alias curl='curl --compressed "-L#JRC" - '
 alias wget='wget -c --content-disposition --progress=bar -N '
 
 alias _='sudo'
