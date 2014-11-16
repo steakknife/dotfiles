@@ -1,6 +1,6 @@
 [user]
-	name = Barry Allard
-	email = barry.allard@gmail.com
+# email set by GIT_AUTHOR_EMAIL
+# name set by GIT_AUTHOR_NAME
 [core]
 	autocrlf = false
 	filemode = false
