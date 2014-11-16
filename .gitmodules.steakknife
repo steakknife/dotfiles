@@ -2,6 +2,6 @@
 	path = bin
 	url = git@github.com:steakknife/dotbin.git
 
-[submodule "prezto"]
+[submodule ".zprezto"]
 	path = .zprezto
 	url = git@github.com:steakknife/prezto.git
