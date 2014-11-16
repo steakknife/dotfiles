@@ -1,12 +1,19 @@
 # ignore most everything
-*
+/*
 
 # then dont ignore ~/.*
 !/.*
 
-# and ~/bin/
-!bin/**/*
+# but then ignore ~/.zprezto and ~/bin
+/bin
+/.zprezto
 
+# and ignore /.*/
+/.*/
+
+# also dont ignore the license and readme
+!LICENSE
+!README.md
 
 # ignore other shit
 .CFUserTextEncoding
@@ -26,4 +33,4 @@
 /.ssh/
 /.netrc
 /.zcompdump*
-.viminfo
+/.viminfo
