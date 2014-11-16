@@ -6,9 +6,13 @@
 # and ignore /.*/
 /.*/
 
-# but then ignore ~/.zprezto and ~/bin
+# submodules
 !/bin/
 !/.zprezto/
+
+/bin/.git/
+/.zprezto/.git/
+# submodules
 
 
 # also dont ignore the license and readme
