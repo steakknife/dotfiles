@@ -10,4 +10,4 @@
     cd
     git clone https://github.com/steakknife/dotfiles .
     ln -sf .gitmodules.public .gitmodules
-    git submodule update --recurse
+    git submodule update --init --recursive
