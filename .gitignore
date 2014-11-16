@@ -3,13 +3,13 @@
 
 # then dont ignore ~/.*
 !/.*
-
-# but then ignore ~/.zprezto and ~/bin
-/bin/
-/.zprezto/
-
 # and ignore /.*/
 /.*/
+
+# but then ignore ~/.zprezto and ~/bin
+!/bin/
+!/.zprezto/
+
 
 # also dont ignore the license and readme
 !LICENSE
