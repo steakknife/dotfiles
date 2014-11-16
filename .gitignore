@@ -1,0 +1,29 @@
+# ignore most everything
+*
+
+# then dont ignore ~/.*
+!/.*
+
+# and ~/bin/
+!bin/**/*
+
+
+# ignore other shit
+.CFUserTextEncoding
+.DS_Store
+.Trash/
+*.swp
+*.bak
+*.txt
+
+
+# ---- DO NOT COPY IMPORTANT CREDENTIALS AND SHIT
+
+*hist*
+*hst*
+
+/.rnd
+/.ssh/
+/.netrc
+/.zcompdump*
+/.viminfo

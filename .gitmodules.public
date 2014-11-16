@@ -1,0 +1,7 @@
+[submodule "bin"]
+  path = bin
+  url = https://github.com/steakknife/dotbin
+
+[submodule "zprezto"]
+  path = .zprezto
+  url = https://github.com/steakknife/zprezto

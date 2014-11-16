@@ -1,0 +1,33 @@
+[user]
+	name = Barry Allard
+	email = barry.allard@gmail.com
+[core]
+	autocrlf = false
+	filemode = false
+	deltaBaseCacheLimit = 1G
+	excludesfile = /Users/bmf/.gitignore_global
+[push]
+        default = matching
+[color]
+	diff = auto
+	interactive = auto
+	status = auto
+	branch = auto
+	ui = true
+[pager]
+
+#	diff = diff-highlight | less
+#	log = diff-highlight | less
+#	show = diff-highlight | less
+
+#	diff = colordiff2 | less
+#	log = colordiff2 | less
+#	show = colordiff2 | less
+[alias]
+  d = diff --color-words --word-diff-regex=.
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

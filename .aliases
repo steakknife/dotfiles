@@ -1,0 +1,183 @@
+DISABLE_CORRECTION_CMDS='
+ack
+cd
+clang
+cp
+ebuild
+gcc
+gist
+grep
+heroku
+ln
+man
+mkdir
+mv
+mysql
+psql
+redis
+rm
+'
+
+DISABLE_GLOBBING_CMDS='
+bower
+fc
+find
+ftp
+history
+locate
+rake
+rsync
+scp
+sftp
+'
+
+# Disable correction
+for CMD in $DISABLE_CORRECTION_CMDS; do
+  alias $CMD="nocorrect $CMD"
+done
+
+# Disable globbing
+for CMD in $DISABLE_GLOBBING_CMDS; do
+  alias $CMD="noglob $CMD"
+done
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+
+alias l='ls -1AG'         # Lists in one column, hidden files.
+alias ll='ls -lhG'        # Lists human readable sizes.
+alias lr='ll -R'         # Lists human readable sizes, recursively.
+alias la='ll -A'         # Lists human readable sizes, hidden files.
+alias lm='la | "$PAGER"' # Lists human readable sizes, hidden files through pager.
+alias lx='ll -XB'        # Lists sorted by extension (GNU only).
+alias lk='ll -Sr'        # Lists sorted by size, largest last.
+alias lt='ll -tr'        # Lists sorted by date, most recent last.
+alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.
+alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
+#alias sl='ls'            # I often screw this up.
+
+case `uname` in 
+*arwin*)
+  alias o='open'
+  ;;
+*ygwin*)
+  alias o='cygstart'
+  alias pbcopy='tee > /dev/clipboard'
+  alias pbpaste='cat /dev/clipboard'
+  ;;
+*) # posix, etc.
+  alias o='xdg-open'
+  if which xclip >/dev/null 2>&1; then
+    alias pbcopy='xclip -selection clipboard -in'
+    alias pbpaste='xclip -selection clipboard -out'
+  elif which xsel >/dev/null 2>&1; then
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+  fi
+  ;;
+esac
+
+alias pbc='pbcopy'
+alias pbp='pbpaste'
+
+if [ -e "$(which curl >/dev/null 2>&1)" ]; then
+  alias get='curl'
+elif [ -e "$(which wget >/dev/null 2>&1)" ]; then
+  alias get='wget'
+fi
+alias curl='curl --compressed -L#JRC - '
+alias wget='wget -c --content-disposition --progress=bar -N '
+
+alias _='sudo'
+alias b='${BROWSER}'
+alias cp='cp -i'
+alias e='${EDITOR}'
+alias ln='ln -i'
+#alias mkdir='mkdir -p'
+alias mv='mv -i'
+alias p='${PAGER}'
+alias po='popd'
+alias pu='pushd'
+alias rm='rm -i'
+alias type='type -a'
+
+alias g=git
+
+alias h=history
+alias j=jobs
+
+# Enable aliases to be sudo’ed
+#alias sudo='sudo '
+
+# OSX specific
+command -v sha1sum >/dev/null || alias sha1sum='shasum'
+command -v md5sum >/dev/null || alias md5sum='md5'
+alias plistbuddy=/usr/libexec/PlistBuddy
+alias updatedb='susudo /usr/libexec/locate.updatedb'
+
+# Show/hide hidden files in Finder
+alias showallfiles="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hideallfiles="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# URL-encode strings
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+
+# Merge PDF files
+# Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
+alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
+
+# Spotlight on/off
+alias spotoff="sudo mdutil -a -i off"
+alias spoton="sudo mdutil -a -i on"
+
+# mDNS announcing on/off
+#alias mdnsannounce='echo Your computer is $(grep -q NoMulticastAdvertisements /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist && echo invisible || echo visible) to other computers'
+#alias mdnsannounceon='PLIST=/System/Library/LaunchDaemons/com.apple.mDNSResponder.plist ; grep -q "<string>-NoMulticastAdvertisements</string>" $PLIST && sudo sed -i "" "/<string>-NoMulticastAdvertisements<\/string>/d" $PLIST && sudo launchctl unload -w $PLIST && sudo launchctl load -w $PLIST'
+#alias mdnsannounceoff='MAGIC="<string>-NoMulticastAdvertisements</string>" PLIST=/System/Library/LaunchDaemons/com.apple.mDNSResponder.plist ; grep -q "$MAGIC" $PLIST || { awk "/<\/array>/{print \"$MAGIC\"}1" $PLIST | sudo tee $PLIST.new >/dev/null && sudo mv $PLIST.new $PLIST && sudo launchctl unload -w $PLIST && sudo launchctl load -w $PLIST ; }'
+
+# temporary spaces
+alias mkts='pushd `mktemp -d -t tempspaces` >/dev/null'
+alias lsts='ls -d "${TMPDIR}tempspaces".* 2>/dev/null'
+
+# bundler
+alias bundleinit='bundle package && bundle --local --path=vendor/bundle --binstubs=vendor/bin'
+
+# monkeysphere-enabled commands
+_monkeysphere_enable() {
+  MONKEYSPHERE_ENABLE_CMD="$1"; shift
+  if ssh-add -l | grep -q 'has no id'; then
+    monkeysphere s
+  fi
+  "$MONKEYSPHERE_ENABLE_CMD" "$@"
+}
+
+_git_monkeysphere() {
+  case "$1" in
+  fetch|clone|push|pull) _monkeysphere_enable \git "$@" ;;
+  *) \git "$@"
+  esac
+}
+
+alias git='_git_monkeysphere'
+alias ssh='_monkeysphere_enable \ssh'
+alias scp='_monkeysphere_enable \scp'
+alias sftp='_monkeysphere_enable \sftp'
+
+# top
+# Resource Usage
+alias df='df -h'
+alias du='du -h'
+
+if which htop >/dev/null 2>&1; then
+  alias top=htop
+else
+  alias topc='top -o cpu'
+  alias topm='top -o vsize'
+fi
