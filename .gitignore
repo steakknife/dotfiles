@@ -5,8 +5,8 @@
 !/.*
 
 # but then ignore ~/.zprezto and ~/bin
-/bin
-/.zprezto
+/bin/
+/.zprezto/
 
 # and ignore /.*/
 /.*/
