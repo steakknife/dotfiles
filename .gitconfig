@@ -25,7 +25,7 @@
 #	show = colordiff2 | less
 [alias]
   a = add -A
-  c = commit -sS
+  c = commit -sS -m
   co = clone
   d = diff --color-words --word-diff-regex=.
   l = log --pretty=oneline
