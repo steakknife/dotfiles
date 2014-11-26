@@ -78,6 +78,9 @@ au BufRead,BufNewFile *.go set filetype=go
 " Dont' show welcome
 set shortmess+=I
 
+" Prevent visual selection with mouse
+set mouse-=a
+
 " always show vim-airline
 set laststatus=2
 "set showcmd 
