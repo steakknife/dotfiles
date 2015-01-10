@@ -110,3 +110,9 @@ let g:airline_symbols.linenr = '⭡'
 let g:airline_enable_branch     = 1
 let g:airline_enable_syntastic  = 1
 colorscheme slate
+
+" Undo
+set undolevels=10000
+
+
+

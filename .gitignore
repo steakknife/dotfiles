@@ -23,7 +23,7 @@
 .CFUserTextEncoding
 .DS_Store
 .Trash/
-*.swp
+*.sw*
 *.bak
 *.txt
 
@@ -38,3 +38,5 @@
 /.netrc
 /.zcompdump*
 /.viminfo
+/.Xauthority
+/.man.conf

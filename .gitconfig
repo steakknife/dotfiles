@@ -26,7 +26,8 @@
 [alias]
   a = add -A
   c = commit -sS -m
-  co = clone
+  cl = clone --recurse-submodules
+  co = checkout
   d = diff --color-words --word-diff-regex=.
   l = log --pretty=oneline
   ll = log --pretty
@@ -38,3 +39,18 @@
 #[mergetool "sourcetree"]
 #	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 #	trustExitCode = true
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[user]
+	name = Barry Allard
+	email = barry.allard@gmail.com
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[hub]
+	protocol = https

@@ -116,7 +116,7 @@ alias j=jobs
 command -v sha1sum >/dev/null || alias sha1sum='shasum'
 command -v md5sum >/dev/null || alias md5sum='md5'
 alias plistbuddy=/usr/libexec/PlistBuddy
-alias updatedb='susudo /usr/libexec/locate.updatedb'
+alias updatedb='sudo /usr/libexec/locate.updatedb'
 
 # Show/hide hidden files in Finder
 alias showallfiles="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
@@ -181,3 +181,5 @@ else
   alias topc='top -o cpu'
   alias topm='top -o vsize'
 fi
+
+alias man='man -C ~/.man.conf'
